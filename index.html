@@ -1,0 +1,822 @@
+<title>Adham Lachinov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F1F4F4;
+  --card:#FFFFFF;
+  --ink:#0F1719;
+  --ink-2:#3A4A4D;
+  --muted:#61757A;
+  --rule:#D3DCDC;
+  --rule-soft:#E4EAEA;
+  --accent:#0B5563;
+  --accent-ink:#083F4A;
+  --accent-wash:#E2EDEF;
+  --signal:#8A5A0B;
+  --signal-wash:#F4EBDA;
+  --shadow:0 1px 2px rgba(15,23,25,.05),0 8px 24px -16px rgba(15,23,25,.35);
+
+  --f-display:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+
+  --s1:.35rem; --s2:.7rem; --s3:1.1rem; --s4:1.7rem; --s5:2.6rem; --s6:4rem; --s7:6rem;
+  --maxw:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0A1113;
+    --card:#111A1D;
+    --ink:#E7EFF0;
+    --ink-2:#B4C4C6;
+    --muted:#849699;
+    --rule:#223134;
+    --rule-soft:#1A2528;
+    --accent:#3BA6B8;
+    --accent-ink:#7FCEDB;
+    --accent-wash:#12262B;
+    --signal:#D3A050;
+    --signal-wash:#2A2113;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0A1113;
+  --card:#111A1D;
+  --ink:#E7EFF0;
+  --ink-2:#B4C4C6;
+  --muted:#849699;
+  --rule:#223134;
+  --rule-soft:#1A2528;
+  --accent:#3BA6B8;
+  --accent-ink:#7FCEDB;
+  --accent-wash:#12262B;
+  --signal:#D3A050;
+  --signal-wash:#2A2113;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent-ink);text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.12;text-wrap:balance;margin:0}
+p{margin:0}
+
+.eyebrow{
+  font-family:var(--f-mono);font-size:.68rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s4)}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:1px solid var(--rule);background:var(--card)}
+.mast-grid{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:var(--s5);padding:var(--s6) 0 var(--s5);
+}
+.name{font-size:clamp(2.6rem,7vw,4.4rem);letter-spacing:-.02em;margin-bottom:var(--s2)}
+.role{
+  font-family:var(--f-display);font-size:clamp(1.05rem,2.4vw,1.35rem);
+  font-weight:600;color:var(--accent-ink);line-height:1.3;letter-spacing:-.005em;
+}
+.lede{margin-top:var(--s3);color:var(--ink-2);max-width:60ch;font-size:1.02rem}
+
+.factsheet{
+  border:1px solid var(--rule);border-radius:3px;background:var(--paper);
+  align-self:start;
+}
+.factsheet dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+.factsheet dt{
+  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);padding:var(--s2) var(--s3);border-bottom:1px solid var(--rule-soft);
+  white-space:nowrap;
+}
+.factsheet dd{
+  margin:0;padding:var(--s2) var(--s3);font-size:.86rem;color:var(--ink-2);
+  border-bottom:1px solid var(--rule-soft);border-left:1px solid var(--rule-soft);
+}
+.factsheet dt:last-of-type,.factsheet dd:last-of-type{border-bottom:0}
+
+/* ---------- metrics ---------- */
+.metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--rule);
+}
+.metric{padding:var(--s3) var(--s4) var(--s4);border-right:1px solid var(--rule-soft)}
+.metric:last-child{border-right:0}
+.metric b{
+  display:block;font-family:var(--f-display);font-weight:700;
+  font-size:clamp(1.9rem,4vw,2.7rem);line-height:1;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;color:var(--accent-ink);
+}
+.metric span{display:block;margin-top:var(--s1);font-size:.82rem;color:var(--muted);line-height:1.35}
+
+/* ---------- body layout ---------- */
+.shell{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s6);padding:var(--s6) 0 var(--s7)}
+.rail{position:sticky;top:var(--s4);align-self:start;font-family:var(--f-mono);font-size:.74rem}
+.rail ol{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--s1)}
+.rail a{display:block;padding:.3rem 0;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+.rail a:hover{color:var(--accent-ink);border-bottom-color:var(--rule)}
+.rail .num{color:var(--rule);margin-right:.5rem}
+
+section{margin-bottom:var(--s7);scroll-margin-top:var(--s4)}
+.sec-head{border-bottom:2px solid var(--ink);padding-bottom:var(--s2);margin-bottom:var(--s4)}
+.sec-head h2{font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.015em;margin-top:var(--s1)}
+.sec-note{margin-top:var(--s2);color:var(--muted);font-size:.92rem;max-width:66ch}
+
+/* ---------- case studies ---------- */
+.case{
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  box-shadow:var(--shadow);margin-bottom:var(--s4);overflow:hidden;
+}
+.case-head{padding:var(--s4) var(--s4) var(--s3);border-bottom:1px solid var(--rule-soft)}
+.case-head h3{font-size:1.4rem;letter-spacing:-.01em;margin-top:var(--s1)}
+.case-body{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.pane{padding:var(--s3) var(--s4) var(--s4);border-right:1px solid var(--rule-soft)}
+.pane:last-child{border-right:0}
+.pane h4{
+  font-family:var(--f-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:var(--s2);
+}
+.pane p{font-size:.92rem;color:var(--ink-2)}
+.pane ul{margin:0;padding-left:1.05rem;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:var(--s1)}
+.stackline{
+  padding:var(--s2) var(--s4);border-top:1px solid var(--rule-soft);background:var(--paper);
+  font-family:var(--f-mono);font-size:.74rem;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:.35rem .9rem;align-items:baseline;
+}
+.stackline b{color:var(--ink-2);font-weight:500}
+.note-de{
+  margin:var(--s3) var(--s4) 0;padding:var(--s2) var(--s3);
+  border-left:3px solid var(--signal);background:var(--signal-wash);
+  font-size:.88rem;color:var(--ink-2);border-radius:0 2px 2px 0;
+}
+.note-de b{color:var(--ink)}
+
+/* ---------- index table ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.88rem}
+caption{text-align:left;padding:var(--s3) var(--s3) var(--s2);font-family:var(--f-mono);
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+thead th{
+  text-align:left;font-family:var(--f-mono);font-size:.65rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  padding:var(--s2) var(--s3);border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+tbody td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--rule-soft);vertical-align:top;color:var(--ink-2)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{
+  text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--rule-soft);
+  font-family:var(--f-body);font-weight:600;color:var(--ink);vertical-align:top;width:30%;
+}
+tbody tr.group th{
+  background:var(--accent-wash);color:var(--accent-ink);font-family:var(--f-mono);
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  border-bottom:1px solid var(--rule);
+}
+td.tech{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);width:28%}
+
+/* ---------- stack ---------- */
+.stackgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--s3)}
+.stackcard{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:var(--s3)}
+.stackcard h4{font-family:var(--f-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:var(--s2)}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.chip{
+  font-family:var(--f-mono);font-size:.72rem;padding:.18rem .5rem;
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);background:var(--paper);
+}
+.chip.core{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-wash)}
+
+/* ---------- contact ---------- */
+.contact{
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:var(--s4);display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:var(--s3);
+}
+.contact div p{font-size:.95rem;margin-top:var(--s1)}
+footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(--muted);font-size:.82rem}
+
+@media (max-width:960px){
+  .mast-grid{grid-template-columns:1fr;gap:var(--s4);padding:var(--s5) 0 var(--s4)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--rule-soft)}
+  .shell{grid-template-columns:1fr;gap:var(--s4);padding:var(--s5) 0 var(--s6)}
+  .rail{position:static;border-bottom:1px solid var(--rule);padding-bottom:var(--s3)}
+  .rail ol{flex-direction:row;flex-wrap:wrap;gap:var(--s1) var(--s3)}
+  .case-body{grid-template-columns:1fr}
+  .pane{border-right:0;border-bottom:1px solid var(--rule-soft)}
+  .pane:last-child{border-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-grid">
+      <div>
+        <p class="eyebrow">Portfolio — Berlin, Germany</p>
+        <h1 class="name">Adham Lachinov</h1>
+        <p class="role">Software architect and backend engineer — C#/.NET and SQL Server, building the systems a retail business actually runs on.</p>
+        <p class="lede">
+          ERP, point of sale, warehouse flow, fiscal compliance, identity. Work that has to be
+          correct on a Monday morning when four hundred people are waiting for it. This page
+          describes what the systems do and how they are built — no client data, no internal
+          identifiers, no source code.
+        </p>
+      </div>
+
+      <div class="factsheet">
+        <dl>
+          <dt>Location</dt><dd>Berlin, Germany</dd>
+          <dt>Core stack</dt><dd>C# · .NET 10 · ASP.NET Core · MS SQL Server · T-SQL</dd>
+          <dt>Domains</dt><dd>Retail ERP · POS &amp; fiscal · WMS · Identity &amp; RBAC · BI</dd>
+          <dt>Education</dt><dd>B.Sc. Computer Engineering, Azerbaijan State Oil &amp; Industry University</dd>
+          <dt>Languages</dt><dd>Azerbaijani (native) · Turkish C2 · English B2 · Russian B1 · German A2</dd>
+          <dt>Work status</dt><dd>German residence permit held; the work authorisation is updated per employer — a short administrative step, at no cost to the employer</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><b>43</b><span>production systems designed or built</span></div>
+      <div class="metric"><b>18</b><span>applications behind one identity layer</span></div>
+      <div class="metric"><b>150+</b><span>retail stores served by the platform</span></div>
+      <div class="metric"><b>2019</b><span>working in C#/.NET since</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="shell">
+    <nav class="rail" aria-label="Sections">
+      <p class="eyebrow">Contents</p>
+      <ol>
+        <li><a href="#work"><span class="num">01</span>Selected work</a></li>
+        <li><a href="#index"><span class="num">02</span>System index</a></li>
+        <li><a href="#stack"><span class="num">03</span>Stack</a></li>
+        <li><a href="#how"><span class="num">04</span>How I work</a></li>
+        <li><a href="#contact"><span class="num">05</span>Contact</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <!-- ============ SELECTED WORK ============ -->
+      <section id="work">
+        <div class="sec-head">
+          <p class="eyebrow">01 — Selected work</p>
+          <h2>Five problems worth describing</h2>
+          <p class="sec-note">
+            All of this work is either an employer's intellectual property or a commercial product,
+            so there is no public repository to link. What follows is the engineering: the problem,
+            the decision, the outcome, the stack.
+          </p>
+        </div>
+
+        <article class="case">
+          <div class="case-head">
+            <p class="eyebrow">Identity &amp; platform architecture</p>
+            <h3>One identity layer, eighteen applications</h3>
+          </div>
+          <div class="case-body">
+            <div class="pane">
+              <h4>Problem</h4>
+              <p>
+                A national grocery retailer had grown a set of internal applications — warehouse,
+                store operations, HR, contracts, BI, communication — each with its own login and its
+                own idea of who a user was. Every new application meant re-implementing
+                authentication, and permissions drifted apart between them.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>Approach</h4>
+              <ul>
+                <li>A central authentication and authorisation service as the single source of identity.</li>
+                <li>Office staff recognised through Active Directory integration — no password prompt at all.</li>
+                <li>A separate badge-and-password path for shop-floor terminals outside the domain.</li>
+                <li>Short-lived tokens for application-to-application handoff, so a user never re-authenticates when moving between systems.</li>
+                <li>Permission trees defined per service from a template, rather than hard-coded per application.</li>
+                <li>Roles derived from the org chart itself: if the directory says people report to you, the system treats you as their approver.</li>
+              </ul>
+            </div>
+            <div class="pane">
+              <h4>Outcome</h4>
+              <p>
+                Eighteen applications behind one identity and one permission model, served under a
+                single domain with path-based routing. Adding an application became a matter of
+                registering a service and declaring its permission tree — no new authentication code,
+                and no new place for permissions to go stale.
+              </p>
+            </div>
+          </div>
+          <div class="stackline">
+            <b>Stack</b><span>C#</span><span>ASP.NET Core</span><span>Active Directory (NTLM/Kerberos)</span>
+            <span>JWT</span><span>Oracle</span><span>SQL Server</span><span>nginx</span>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-head">
+            <p class="eyebrow">Point of sale &amp; regulatory compliance</p>
+            <h3>A till that satisfies a national tax authority</h3>
+          </div>
+          <div class="case-body">
+            <div class="pane">
+              <h4>Problem</h4>
+              <p>
+                Point-of-sale software has to register every sale with the state in a form that can
+                later be audited. Certification is not a feature — an uncertified till cannot legally
+                take money. At the same time a shop cannot stop selling because a network link
+                dropped.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>Approach</h4>
+              <ul>
+                <li>Designed the transaction path so fiscal registration is part of the sale, not a batch job bolted on afterwards.</li>
+                <li>A local offline queue keeps the till trading when the link to the fiscal service is unavailable, then reconciles on reconnect.</li>
+                <li>Reconciliation between the till's local database and the central ERP, with differences surfaced and correctable rather than silently lost.</li>
+                <li>A second-generation build targeting Android kiosk hardware alongside Windows.</li>
+              </ul>
+            </div>
+            <div class="pane">
+              <h4>Outcome</h4>
+              <p>
+                A certified commercial POS product running in live retail, and — because I own the
+                product — end-to-end responsibility for it: architecture, licensing system, installer,
+                printing service, and the fiscal certification itself.
+              </p>
+            </div>
+          </div>
+          <p class="note-de">
+            <b>Why this is relevant in Germany.</b> This is structurally the same problem as
+            <b>TSE / KassenSichV</b>: a certified security element in the receipt path, an offline
+            mode that cannot lose transactions, and an audit trail that has to hold up years later.
+            The regulation differs; the engineering does not.
+          </p>
+          <div class="stackline">
+            <b>Stack</b><span>C#</span><span>.NET</span><span>SQL Server</span><span>SQLite (offline queue)</span>
+            <span>Windows</span><span>Android kiosk</span><span>WiX / MSI</span>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-head">
+            <p class="eyebrow">Systems integration</p>
+            <h3>Making systems talk that were never meant to meet</h3>
+          </div>
+          <div class="case-body">
+            <div class="pane">
+              <h4>Problem</h4>
+              <p>
+                A quick-service restaurant operator ran point of sale on one vendor's Oracle stack,
+                finance and inventory on a second vendor's PostgreSQL ERP, and procurement in SAP.
+                Sales, goods receipts and stock movements had to cross all three — and were crossing
+                them by hand.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>Approach</h4>
+              <ul>
+                <li>Small, single-purpose services rather than one integration monolith: a POS-to-ERP sales sync running as a Windows service; a REST gateway that accepts goods-receipt pushes from SAP and writes ERP delivery notes; a receipt sync module.</li>
+                <li>All three on one shared template, so the fourth flow is a module rather than a new system.</li>
+                <li>Compiled with <b>Native AOT</b> — instant start, no runtime installed on the host, a smaller attack surface, and a binary that does not casually decompile.</li>
+                <li>Production databases treated as read-only until a write path is explicitly reviewed and approved.</li>
+              </ul>
+            </div>
+            <div class="pane">
+              <h4>Outcome</h4>
+              <p>
+                Three production integration services on a common Clean Architecture template.
+                Manual re-keying between the three systems removed for the flows that were migrated,
+                and each new document type became a bounded, testable addition.
+              </p>
+            </div>
+          </div>
+          <div class="stackline">
+            <b>Stack</b><span>.NET 10</span><span>Minimal API</span><span>Native AOT</span>
+            <span>Clean Architecture</span><span>Oracle</span><span>PostgreSQL</span><span>REST</span><span>Windows Service</span>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-head">
+            <p class="eyebrow">Legacy migration</p>
+            <h3>Retiring a spreadsheet that had become infrastructure</h3>
+          </div>
+          <div class="case-body">
+            <div class="pane">
+              <h4>Problem</h4>
+              <p>
+                In-store product placement across 150+ stores — which brand sits on which stand,
+                under which contract, checked physically each month — ran on a stack of spreadsheets,
+                scripts and shared drive folders. It worked until it was load-bearing: no single
+                source of truth, nothing enforced, no way to prove a check had happened.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>Approach</h4>
+              <ul>
+                <li>Made the store floor plan the interface: placements are pins on the plan, moved by dragging, with zoom and pan.</li>
+                <li>The monthly physical check became a guided flow with photo evidence and an approval step, so a completed check is a record, not a claim.</li>
+                <li>Automatic alerts for incomplete placements and contracts approaching expiry — the two failure modes the spreadsheet could not see.</li>
+                <li>Field-to-office messaging in the same application, so the context of a problem stays attached to the placement it concerns.</li>
+              </ul>
+            </div>
+            <div class="pane">
+              <h4>Outcome</h4>
+              <p>
+                The process moved onto a system with enforced rules and an audit trail, while field
+                teams kept working through the transition. The migration risk — not the feature
+                list — was the hard part, and it is the part I would want to be asked about.
+              </p>
+            </div>
+          </div>
+          <div class="stackline">
+            <b>Stack</b><span>C#</span><span>ASP.NET Core</span><span>SQL Server</span>
+            <span>JavaScript</span><span>PWA</span><span>image pipeline</span>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-head">
+            <p class="eyebrow">Applied AI</p>
+            <h3>AI as a working part of the product</h3>
+          </div>
+          <div class="case-body">
+            <div class="pane">
+              <h4>Problem</h4>
+              <p>
+                Two different questions. First: an ERP holds everything a business knows, but an AI
+                assistant cannot reach any of it. Second: a bakery distribution business decides
+                every morning how many loaves each van carries to each customer — too few loses a
+                sale, too many becomes waste by evening.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>Approach</h4>
+              <ul>
+                <li>An <b>MCP server</b> exposing ERP operations to AI agents, so an assistant can query and act on real business data instead of guessing.</li>
+                <li>A daily order-planning engine that recommends an exact quantity per rep, customer, product and date — and writes a one-sentence explanation in the operator's own language, so the number can be argued with.</li>
+                <li>A newsvendor model over the demand distribution, with ABC customer profiling, product shelf life, and damped feedback calibration against what actually sold.</li>
+                <li>One rule is deliberately asymmetric and enforced in code: never recommend below what already sold, and actively reduce returns. A symmetric "don't change much" rule would have been easier and wrong.</li>
+              </ul>
+            </div>
+            <div class="pane">
+              <h4>Outcome</h4>
+              <p>
+                A forecasting service in production with a covering unit-test suite, and an ERP that
+                an AI agent can operate. I also use AI-assisted development daily — as a reviewer of
+                its output, not a passenger.
+              </p>
+            </div>
+          </div>
+          <div class="stackline">
+            <b>Stack</b><span>C#</span><span>.NET 10</span><span>Model Context Protocol</span><span>Dapper</span>
+            <span>SQLite</span><span>PostgreSQL</span><span>Next.js</span><span>React</span><span>xUnit</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ SYSTEM INDEX ============ -->
+      <section id="index">
+        <div class="sec-head">
+          <p class="eyebrow">02 — System index</p>
+          <h2>What the other systems do</h2>
+          <p class="sec-note">
+            The five above are the ones worth a conversation. These are the rest, described by
+            function and stack only. Internal product names, hostnames, schemas and business rules
+            are deliberately omitted.
+          </p>
+        </div>
+
+        <div class="tablewrap">
+          <table>
+            <caption>43 systems — retail platform, integration services, product line, independent work</caption>
+            <thead>
+              <tr><th scope="col">System</th><th scope="col">What it does</th><th scope="col">Stack</th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><th colspan="3" scope="colgroup">Retail platform — warehouse &amp; logistics</th></tr>
+              <tr>
+                <th scope="row">Distribution-centre flow</th>
+                <td>Fresh produce from supplier delivery to store dispatch: order import, pallet-level goods receipt with gross/tare/net weighing, quality control with mandatory photo evidence, a commercial accept/reject decision step, splitting into store pallets, handheld picking by QR scan, a second control pass, dock assignment and dispatch. The same codebase serves both desk browsers and warehouse handheld terminals.</td>
+                <td class="tech">C#, ASP.NET Core, SQL Server, PWA, barcode/QR</td>
+              </tr>
+              <tr>
+                <th scope="row">Transport request management</th>
+                <td>Inter-site transfer requests with a deadline derived from the load type, a multi-stage approval chain, an extra approval step for restricted sites, and a scheduler that fails a request automatically once its deadline passes. Manual failure requires a written reason.</td>
+                <td class="tech">C#, .NET, PostgreSQL, scheduler, RBAC</td>
+              </tr>
+              <tr>
+                <th scope="row">Delivery scanning</th>
+                <td>Camera-based barcode scanning of shipments at entry and exit, with duplicate-scan protection and offline caching for weak-signal areas.</td>
+                <td class="tech">C#, PWA, service worker, camera API</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Retail platform — store operations</th></tr>
+              <tr>
+                <th scope="row">POS fleet monitoring</th>
+                <td>Live status of every till across the estate, streamed to the browser and stable enough to sit on a wall display all day. Detects and repairs sales records that exist on a till but never reached the central ERP, finds VAT-rate mismatches between store and centre, and runs reviewed SQL across many stores at once. Connection strings never leave the server.</td>
+                <td class="tech">C#, ASP.NET Core, Server-Sent Events, PostgreSQL, Oracle</td>
+              </tr>
+              <tr>
+                <th scope="row">Store locator</th>
+                <td>Every store on an interactive map, filtered by store format and delivery platform, searchable by name or number, with one-tap navigation and shareable links.</td>
+                <td class="tech">JavaScript, map rendering, PWA</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Retail platform — corporate workflow</th></tr>
+              <tr>
+                <th scope="row">Contract lifecycle management</th>
+                <td>Contract request through legal review, configurable multi-stage approval, amendments, and expiry warnings — plus versioned, approved standard-operating-procedure documents in a department hierarchy.</td>
+                <td class="tech">C#, ASP.NET Core, SQL Server, JWT</td>
+              </tr>
+              <tr>
+                <th scope="row">Internal request &amp; approval system</th>
+                <td>Requests routed automatically into the approval flow configured for their type. Rejection requires a reason. Out-of-office mode reassigns pending approvals to a delegate. Notifications arrive in real time in-app, as browser push when it is closed, and by email. Uploaded files are validated by actual content type, not by filename.</td>
+                <td class="tech">C#, WebSocket, push API, Microsoft Graph, PostgreSQL</td>
+              </tr>
+              <tr>
+                <th scope="row">Position access matrix</th>
+                <td>Defines which equipment and which system permissions each job position should receive, with a requirement level and a risk level per item, departmental approvers, bulk decisions, and a periodic digest email. Virtualised tables keep a very long matrix responsive.</td>
+                <td class="tech">C#, .NET, PostgreSQL, virtual scrolling, PWA</td>
+              </tr>
+              <tr>
+                <th scope="row">Document library</th>
+                <td>Folder-and-file document storage with role-scoped rights — administrators manage everything, managers their own folders, users their own uploads — plus a department and staff directory.</td>
+                <td class="tech">C#, ASP.NET Core, SQL Server</td>
+              </tr>
+              <tr>
+                <th scope="row">Internal communications portal</th>
+                <td>Company posts with a rich editor, audience-targeted daily bulletins, a wiki knowledge base, a document centre handling large uploads, polls, a forum, a suggestion channel, a people directory and cross-content search. Content itself is multilingual, not just the interface.</td>
+                <td class="tech">React, C# API, PostgreSQL, i18n</td>
+              </tr>
+              <tr>
+                <th scope="row">Recruitment records</th>
+                <td>Candidate intake for store and distribution-centre hiring, recognising a returning applicant from identity or phone number and pre-filling the form, with soft deletion, per-author edit scoping, a data grid on desktop and cards on mobile, and Excel export.</td>
+                <td class="tech">C#, ASP.NET Core, Oracle, data grid</td>
+              </tr>
+              <tr>
+                <th scope="row">Contact-centre CRM</th>
+                <td>Logging and categorising customer interactions by channel, store and topic, with file attachments, status tracking and charted reporting.</td>
+                <td class="tech">C#, React, Oracle, charting</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Retail platform — analytics &amp; utilities</th></tr>
+              <tr>
+                <th scope="row">Report engine</th>
+                <td>Administrators turn a reviewed SQL query into a report template with filters, tables and charts; users filter and export. Visibility is role-based, date ranges are capped per role to stop runaway extracts, and large result sets stream in batches rather than blocking the page.</td>
+                <td class="tech">C#, ASP.NET Core, streaming, Oracle, PWA</td>
+              </tr>
+              <tr>
+                <th scope="row">Tax-invoice analytics</th>
+                <td>Read-only analysis of electronic invoices synchronised from the national tax system: totals and trends, status and VAT breakdown, largest counterparties, and rule-based anomaly detection — duplicate serial numbers, VAT that does not reconcile with its base within tolerance, amounts far outside the distribution, and missing counterparty tax IDs.</td>
+                <td class="tech">C#, .NET, PostgreSQL, React, rule engine</td>
+              </tr>
+              <tr>
+                <th scope="row">QR label tooling <span style="color:var(--muted);font-weight:400">(2 systems)</span></th>
+                <td>Generates print-ready 59 × 36 mm labels linking a physical document or planogram to its digital version, so a scan on the shop floor opens the current PDF.</td>
+                <td class="tech">C#, Blazor Server, PDF generation</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Integration services</th></tr>
+              <tr>
+                <th scope="row">POS → ERP sales sync</th>
+                <td>Continuous transfer of restaurant point-of-sale transactions into the ERP, including a marker module for delivery-platform orders that annotates the source without touching existing financial records.</td>
+                <td class="tech">.NET 10, Native AOT, Windows Service, Oracle, PostgreSQL</td>
+              </tr>
+              <tr>
+                <th scope="row">Goods-receipt gateway</th>
+                <td>Accepts goods-receipt pushes from SAP and turns them into ERP delivery notes over REST.</td>
+                <td class="tech">.NET 10, Minimal API, Native AOT, Clean Architecture</td>
+              </tr>
+              <tr>
+                <th scope="row">B2B partner API</th>
+                <td>An external-facing ERP data API built security-first: API keys plus JWT, IP allow-listing, rate limiting, correlation IDs, security headers, response compression and an audit trail, with credentials stored separately from the business data. Ships with a database discovery tool.</td>
+                <td class="tech">C#, .NET, Oracle, SQLite, JWT, rate limiting</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Commercial ERP product line — my own product</th></tr>
+              <tr>
+                <th scope="row">ERP core</th>
+                <td>The ERP itself in two forms — a Blazor web client with a server and data-processing core, and a desktop build on the same domain model, structured as Clean Architecture. Includes a documented accounting module.</td>
+                <td class="tech">C#, Blazor, .NET, SQL Server, Clean Architecture</td>
+              </tr>
+              <tr>
+                <th scope="row">Metadata-driven configurator</th>
+                <td>Screens, fields and behaviour defined as SQL metadata rather than compiled code, so a deployment can be reshaped for a customer without a release. The same idea underpins the report engine above.</td>
+                <td class="tech">C#, T-SQL, SQL Server, dynamic UI</td>
+              </tr>
+              <tr>
+                <th scope="row">Product API &amp; data sync</th>
+                <td>The product's central API, including pricing, plus a SQL Server synchronisation service that keeps store and central data aligned.</td>
+                <td class="tech">C#, .NET 10, Native AOT, SQL Server</td>
+              </tr>
+              <tr>
+                <th scope="row">Licensing system</th>
+                <td>A licensing library packaged for reuse and a licence server behind it — the part of a commercial product that is invisible until it fails.</td>
+                <td class="tech">C#, .NET, NuGet packaging, REST</td>
+              </tr>
+              <tr>
+                <th scope="row">Supporting components</th>
+                <td>Printing service shipped as an MSI installer, a web document viewer, a knowledge-base product with its own API and UI, and a custom typeface for the product.</td>
+                <td class="tech">C#, WiX/MSI, JavaScript, TTF</td>
+              </tr>
+
+              <tr class="group"><th colspan="3" scope="colgroup">Independent projects</th></tr>
+              <tr>
+                <th scope="row">Education assessment platform</th>
+                <td>Exam and question banking, teacher-class management, AI-assisted answer evaluation, leaderboards, notifications, payments and multilingual content, with a Blazor administration panel.</td>
+                <td class="tech">C#, ASP.NET Core, Blazor, AI evaluation</td>
+              </tr>
+              <tr>
+                <th scope="row">Smart shopping trolley</th>
+                <td>An IoT retail trolley: an on-cart display, integrated scales in unit and weight modes, live pricing, and a store-scoped API with an administration panel. Built as a team product.</td>
+                <td class="tech">C#, .NET, PostgreSQL, IoT display, scale integration</td>
+              </tr>
+              <tr>
+                <th scope="row">Hybrid-office desk booking</th>
+                <td>Desk reservation for offices with fewer desks than staff. Double booking is prevented by a partial unique index in the database rather than by application logic, so a race condition cannot break the rule. City → office → room → desk hierarchy, drag-and-drop desk layout, a rolling 21-day window, visibility of who else will be in that day, optional Microsoft Entra ID sign-in, and Docker deployment. Documented across eleven files.</td>
+                <td class="tech">C#, .NET, PostgreSQL, Docker, Entra ID</td>
+              </tr>
+              <tr>
+                <th scope="row">German-language study app</th>
+                <td>A vocabulary and grammar trainer for Azerbaijani speakers, with flashcards, quizzes and speech synthesis for pronunciation. No backend — everything ships with the app and works offline.</td>
+                <td class="tech">React 19, Vite, Tailwind, Web Speech API, PWA</td>
+              </tr>
+              <tr>
+                <th scope="row">CV &amp; application system</th>
+                <td>A multilingual CV generator with its own pagination engine, built to produce tailored, correctly-typeset applications rather than edited copies of one document.</td>
+                <td class="tech">JavaScript, HTML, CSS, print layout</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ STACK ============ -->
+      <section id="stack">
+        <div class="sec-head">
+          <p class="eyebrow">03 — Stack</p>
+          <h2>What I use, and how well</h2>
+          <p class="sec-note">
+            Split honestly. The first group is what I work in every day and would be comfortable
+            being tested on. The second is what I use competently when a project needs it.
+          </p>
+        </div>
+
+        <div class="stackgrid">
+          <div class="stackcard">
+            <h4>Daily — backend</h4>
+            <div class="chips">
+              <span class="chip core">C#</span><span class="chip core">.NET 10 / .NET Core</span>
+              <span class="chip core">ASP.NET Core Web API</span><span class="chip core">Minimal API</span>
+              <span class="chip core">Entity Framework Core</span><span class="chip core">Dapper</span>
+              <span class="chip core">Native AOT</span><span class="chip core">gRPC</span>
+              <span class="chip core">REST</span><span class="chip core">Windows Services</span>
+            </div>
+          </div>
+          <div class="stackcard">
+            <h4>Daily — data</h4>
+            <div class="chips">
+              <span class="chip core">MS SQL Server</span><span class="chip core">T-SQL</span>
+              <span class="chip core">Stored procedures</span><span class="chip core">Query tuning</span>
+              <span class="chip core">PostgreSQL</span><span class="chip core">Oracle</span>
+              <span class="chip core">SQLite</span><span class="chip core">Schema design</span>
+              <span class="chip core">Data migration</span>
+            </div>
+          </div>
+          <div class="stackcard">
+            <h4>Daily — architecture</h4>
+            <div class="chips">
+              <span class="chip core">Clean Architecture</span><span class="chip core">Domain-Driven Design</span>
+              <span class="chip core">Microservices</span><span class="chip core">Event-driven messaging</span>
+              <span class="chip core">SSO &amp; RBAC design</span><span class="chip core">System integration</span>
+              <span class="chip core">Legacy migration</span>
+            </div>
+          </div>
+          <div class="stackcard">
+            <h4>Working level</h4>
+            <div class="chips">
+              <span class="chip">Blazor</span><span class="chip">React</span><span class="chip">Next.js</span>
+              <span class="chip">JavaScript</span><span class="chip">Tailwind</span><span class="chip">PWA</span>
+              <span class="chip">Docker</span><span class="chip">CI/CD pipelines</span>
+              <span class="chip">Git</span><span class="chip">xUnit</span><span class="chip">Azure DevOps</span>
+              <span class="chip">Microsoft Graph</span><span class="chip">Active Directory</span>
+            </div>
+          </div>
+          <div class="stackcard">
+            <h4>AI-assisted engineering</h4>
+            <div class="chips">
+              <span class="chip">Model Context Protocol</span><span class="chip">Claude Code</span>
+              <span class="chip">Cursor</span><span class="chip">GitHub Copilot</span>
+              <span class="chip">Agent tooling</span>
+            </div>
+          </div>
+          <div class="stackcard">
+            <h4>Domain knowledge</h4>
+            <div class="chips">
+              <span class="chip">Retail ERP</span><span class="chip">POS &amp; fiscal compliance</span>
+              <span class="chip">Warehouse management</span><span class="chip">Goods receipt</span>
+              <span class="chip">Excise &amp; tax reporting</span><span class="chip">Contract workflow</span>
+              <span class="chip">BI &amp; reporting</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ HOW I WORK ============ -->
+      <section id="how">
+        <div class="sec-head">
+          <p class="eyebrow">04 — How I work</p>
+          <h2>Four things that are true about me</h2>
+        </div>
+
+        <div class="case">
+          <div class="case-body">
+            <div class="pane">
+              <h4>I own the whole thing</h4>
+              <p>
+                On my own product that meant architecture, licensing, installer, printing service,
+                typeface and the fiscal certification. I am comfortable being the person responsible
+                when something is unclear, and I would rather ask a blunt question early than deliver
+                a confident guess.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>I migrate carefully</h4>
+              <p>
+                Most of my work replaced something that was already running a business. The
+                interesting engineering is rarely the new feature — it is keeping the old path alive
+                until the new one has earned the traffic.
+              </p>
+            </div>
+            <div class="pane">
+              <h4>I say what I don't know</h4>
+              <p>
+                My depth is .NET, SQL Server and integration. I am not going to claim deep cloud
+                infrastructure or platform engineering that I have not run in production. What I do
+                have is a long record of learning a system well enough to be trusted with it.
+              </p>
+            </div>
+          </div>
+          <div class="stackline">
+            <b>Working language</b><span>English (B2) at work</span>
+            <span>German at A2 and improving — currently in structured study</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact">
+        <div class="sec-head">
+          <p class="eyebrow">05 — Contact</p>
+          <h2>Get in touch</h2>
+          <p class="sec-note">
+            Happy to walk through any of the systems above in a call — including the parts that did
+            not work the first time.
+          </p>
+        </div>
+        <div class="contact">
+          <div>
+            <p class="eyebrow">Email</p>
+            <p><a href="mailto:lachinov.edhem@gmail.com">lachinov.edhem@gmail.com</a></p>
+          </div>
+          <div>
+            <p class="eyebrow">Phone</p>
+            <p>+49 155 109 57532</p>
+          </div>
+          <div>
+            <p class="eyebrow">LinkedIn</p>
+            <p><a href="https://www.linkedin.com/in/elachinov/">linkedin.com/in/elachinov</a></p>
+          </div>
+          <div>
+            <p class="eyebrow">Based in</p>
+            <p>Berlin, Germany</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          Adham Lachinov — Berlin. Systems described by function and stack only; no client data,
+          internal identifiers or proprietary source code appears on this page.
+        </p>
+      </footer>
+    </main>
+  </div>
+</div>

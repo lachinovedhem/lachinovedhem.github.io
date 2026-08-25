@@ -1,0 +1,7 @@
+# yalniz portfolio faylları yayımlanır
+*.pdf
+*.docx
+*.xlsx
+*.zip
+.DS_Store
+Thumbs.db
