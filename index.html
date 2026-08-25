@@ -77,6 +77,8 @@ p{margin:0}
   font-size:clamp(1.9rem,4vw,2.7rem);line-height:1;letter-spacing:-.02em;
   font-variant-numeric:tabular-nums;color:var(--accent-ink)}
 .metric span{display:block;margin-top:var(--s1);font-size:.82rem;color:var(--muted);line-height:1.35}
+.metric em{display:block;font-style:normal;font-family:var(--f-mono);font-size:.62rem;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-top:.3rem}
 
 /* layout */
 .shell{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s6);padding:var(--s6) 0 var(--s7)}
@@ -200,7 +202,7 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
       <div class="factsheet">
         <dl>
           <dt>Location</dt><dd>Berlin, Germany</dd>
-          <dt>Current</dt><dd>Software Architect, Azerbaijan Supermarket LLC (Bravo) · Founder, Simple ERP Systems</dd>
+          <dt>Current</dt><dd>Software Architect, Azerbaijan Supermarket LLC (Bravo) · Founder &amp; architect of Simple ERP — a 20-module commercial ERP and state-approved POS, my own product</dd>
           <dt>Core stack</dt><dd>C# · .NET 10 · ASP.NET Core · MS SQL Server · T-SQL</dd>
           <dt>Domains</dt><dd>Retail ERP · POS &amp; fiscal · WMS · Identity &amp; RBAC · BI &amp; reporting</dd>
           <dt>Education</dt><dd>B.Sc. Computer Engineering — Azerbaijan State Oil &amp; Industry University</dd>
@@ -212,10 +214,10 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
     </div>
 
     <div class="metrics">
-      <div class="metric"><b>43</b><span>production systems designed or built</span></div>
-      <div class="metric"><b>150+</b><span>retail stores served by the platform</span></div>
-      <div class="metric"><b>~800</b><span>POS terminals under live monitoring</span></div>
-      <div class="metric"><b>2017</b><span>working in enterprise ERP since</span></div>
+      <div class="metric"><b>43</b><span>production systems designed or built<em>across my whole career</em></span></div>
+      <div class="metric"><b>1,000+</b><span>users on the ERP I own<em>my own product</em></span></div>
+      <div class="metric"><b>200+</b><span>businesses on my state-approved POS<em>my own product</em></span></div>
+      <div class="metric"><b>150+</b><span>stores on the retail platform I architect<em>employer</em></span></div>
     </div>
   </div>
 </header>
@@ -277,13 +279,16 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
               <p class="where">Simple ERP Systems<br>simpler.az</p>
             </div>
             <div>
-              <h3>Founder &amp; Chief Software Architect</h3>
+              <h3>Founder &amp; Chief Software Architect <span class="tag">1,000+ users</span></h3>
               <ul>
-                <li><b>A commercial ERP and POS product, owned end to end</b> — architecture, licensing system, installer, printing service, document viewer, knowledge base, even the product typeface.</li>
-                <li><b>State-certified fiscal point of sale.</b> The POS product is integrated with the national fiscal system and holds a software copyright certificate from the State Intellectual Property Agency of Azerbaijan.</li>
-                <li><b>Metadata-driven configuration</b> as the core architectural idea: the deployment is reshaped per customer through SQL metadata rather than a code branch per client.</li>
-                <li><b>AI integration.</b> An MCP server that exposes ERP operations to AI agents, so an assistant can query and act on live business data.</li>
+                <li><b>A 20-module commercial ERP with over 1,000 users, owned end to end.</b> On-premises and SaaS, holding an official software copyright certificate. Vertical modules for supermarket and retail, pharmacy, restaurant, clinic, lending, property management, manufacturing with BOM, textile, dry cleaning and education — over a common core of warehousing and trade, accounting and audit, finance, HR and payroll, fixed assets, CRM, projects and mobile field sales.</li>
+                <li><b>State-approved online cash register operator status</b> for the POS product, deployed at <b>200+ businesses</b> and cutting merchant hardware and integration cost by around 35%.</li>
+                <li><b>Deep fiscal and payment integration:</b> national e-invoicing, certified fiscal devices, four bank POS terminal networks, a cashless wallet, a loyalty scheme and smart-camera video analytics — each a separate protocol, each a separate failure mode to design around.</li>
+                <li><b>Metadata-driven configuration</b> as the core architectural bet: a deployment is reshaped per customer through SQL metadata rather than a code branch per client, with cross-database sync and multilingual content behind it.</li>
+                <li><b>Delivery-platform integration</b> — live menu, price, stock and order synchronisation with two international delivery marketplaces.</li>
+                <li><b>AI integration.</b> MCP servers letting AI assistants execute gRPC transactions safely, query SQL metadata and scaffold whole modules from a natural-language prompt — under explicit permissions, never a blank cheque.</li>
                 <li><b>Native AOT services</b> for the parts that must start instantly, run without a runtime on the host and resist casual decompilation.</li>
+                <li><b>Everything around the product too:</b> licensing system, installer, printing service, document viewer, knowledge base and the product typeface. There was nobody else to do it.</li>
               </ul>
             </div>
           </div>
@@ -421,7 +426,7 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
           <div class="case-head">
             <div><p class="eyebrow">Point of sale &amp; regulatory compliance</p>
             <h3>A till that satisfies a national tax authority</h3></div>
-            <span class="case-kpi">State-certified product</span>
+            <span class="case-kpi">200+ businesses · −35% merchant cost</span>
           </div>
           <div class="case-body">
             <div class="pane">
@@ -440,15 +445,17 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 <li>A local offline queue keeps the till trading when the fiscal service is unreachable, then reconciles on reconnect — the same offline-first pattern I had built earlier for field-sales agents.</li>
                 <li>Reconciliation between each till's local database and the central ERP, with differences surfaced and correctable rather than silently absorbed.</li>
                 <li>A second-generation build targeting Android kiosk hardware alongside Windows, sharing the transaction core.</li>
+                <li>One integration surface for the whole payment landscape — national e-invoicing, certified fiscal devices, four bank terminal networks, a cashless wallet and a loyalty scheme — so a merchant does not buy and wire five separate boxes.</li>
               </ul>
             </div>
             <div class="pane">
               <h4>Outcome</h4>
               <p>
-                A certified commercial POS product running in live retail, holding a software
-                copyright certificate from the national intellectual property agency — and, because I
-                own the product, full responsibility for it: architecture, licensing, installer,
-                printing service and the certification itself.
+                <b>State-approved online cash register operator status</b>, deployed at
+                <b>200+ businesses</b> and reducing merchant hardware and integration cost by around
+                35% — because the integrations that used to be bought separately came with the
+                product. This is my own product, not employer work, so the architecture, licensing,
+                installer, printing service and the certification itself are all mine.
               </p>
             </div>
           </div>
@@ -766,14 +773,19 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
 
               <tr class="group"><th colspan="3" scope="colgroup">Commercial ERP product line — my own product</th></tr>
               <tr>
-                <th scope="row">ERP core</th>
-                <td>The ERP itself in two forms — a Blazor web client with a server and data-processing core, and a desktop build on the same domain model, structured as Clean Architecture. Includes a documented accounting module.</td>
-                <td class="tech">C#, Blazor, .NET, SQL Server, Clean Architecture</td>
+                <th scope="row">ERP core — 20 modules</th>
+                <td>The ERP itself in two forms: a Blazor web client with a server and data-processing core, and a desktop build on the same domain model, both Clean Architecture. Vertical modules for supermarket and retail, pharmacy, restaurant, clinic, lending, property management, manufacturing with BOM, textile, dry cleaning and education, over a shared core of warehousing and trade, accounting and audit, finance, HR and payroll, fixed assets, CRM, projects and mobile field sales. Available on-premises and as SaaS.</td>
+                <td class="tech">C#, Blazor, .NET, SQL Server, DevExpress, Telerik, Radzen, Ionic</td>
               </tr>
               <tr>
                 <th scope="row">Fiscal POS <span style="color:var(--muted);font-weight:400">(2 generations)</span></th>
-                <td>The certified point-of-sale product: fiscal registration in the transaction path, offline queue, central reconciliation, and a second generation targeting Android kiosk hardware.</td>
-                <td class="tech">C#, .NET, SQL Server, SQLite, Android</td>
+                <td>The state-approved point-of-sale product at 200+ businesses: fiscal registration inside the transaction path, offline queue, central reconciliation, and a second generation on Android kiosk hardware. Integrates national e-invoicing, certified fiscal devices, four bank POS terminal networks, a cashless wallet, a loyalty scheme and smart-camera video analytics.</td>
+                <td class="tech">C#, .NET, SQL Server, SQLite, Android, payment terminal SDKs</td>
+              </tr>
+              <tr>
+                <th scope="row">Delivery marketplace sync</th>
+                <td>Live menu, price, stock and order synchronisation with two international food-delivery platforms, so a restaurant's catalogue and availability stay correct in both without double entry.</td>
+                <td class="tech">C#, .NET, REST, webhook ingestion</td>
               </tr>
               <tr>
                 <th scope="row">Metadata-driven configurator</th>
@@ -890,6 +902,7 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
               <span class="chip">xUnit / NUnit</span><span class="chip">Microsoft Graph</span>
               <span class="chip">Active Directory</span><span class="chip">Entra ID</span>
               <span class="chip">DevExpress</span><span class="chip">Telerik</span>
+              <span class="chip">Radzen</span><span class="chip">Ionic</span>
             </div>
           </div>
           <div class="stackcard">
@@ -905,9 +918,12 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
             <h4>Domain knowledge</h4>
             <div class="chips">
               <span class="chip">Retail ERP</span><span class="chip">POS &amp; fiscal compliance</span>
+              <span class="chip">Payment terminal integration</span><span class="chip">E-invoicing</span>
               <span class="chip">Warehouse management</span><span class="chip">Goods receipt &amp; FIFO</span>
-              <span class="chip">Excise &amp; tax reporting</span><span class="chip">Contract workflow</span>
-              <span class="chip">BI &amp; reporting</span><span class="chip">Field sales</span>
+              <span class="chip">Excise &amp; tax reporting</span><span class="chip">Accounting &amp; audit</span>
+              <span class="chip">HR &amp; payroll</span><span class="chip">Manufacturing / BOM</span>
+              <span class="chip">Contract workflow</span><span class="chip">BI &amp; reporting</span>
+              <span class="chip">Field sales</span>
             </div>
           </div>
         </div>
