@@ -128,6 +128,10 @@ section{margin-bottom:var(--s7);scroll-margin-top:var(--s4)}
   font-family:var(--f-mono);font-size:.74rem;color:var(--muted);
   display:flex;flex-wrap:wrap;gap:.35rem .9rem;align-items:baseline}
 .stackline b{color:var(--ink-2);font-weight:500}
+.why{margin-top:var(--s2);padding-top:var(--s2);border-top:1px dashed var(--rule);
+  font-size:.85rem;color:var(--muted);line-height:1.5}
+.why b{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:.25rem;font-weight:600}
 .note-de{margin:var(--s3) var(--s4) 0;padding:var(--s2) var(--s3);
   border-left:3px solid var(--signal);background:var(--signal-wash);
   font-size:.88rem;color:var(--ink-2);border-radius:0 2px 2px 0}
@@ -208,13 +212,14 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
           <dt>Education</dt><dd>B.Sc. Computer Engineering — Azerbaijan State Oil &amp; Industry University</dd>
           <dt>Credential</dt><dd>Software Copyright Certificate, State Intellectual Property Agency of Azerbaijan (Simple ERP platform)</dd>
           <dt>Languages</dt><dd>Azerbaijani (native) · Turkish C2 · English B2 · German A2, in structured study</dd>
+          <dt>Code</dt><dd><a href="https://github.com/lachinovedhem">github.com/lachinovedhem</a> — my commercial and employer work is closed source; what is public is here</dd>
           <dt>Work status</dt><dd>German residence permit held; the work authorisation is updated per employer — an administrative step of a few weeks, at no cost to the employer</dd>
         </dl>
       </div>
     </div>
 
     <div class="metrics">
-      <div class="metric"><b>43</b><span>production systems designed or built<em>across my whole career</em></span></div>
+      <div class="metric"><b>50+</b><span>production systems designed or built<em>across my whole career</em></span></div>
       <div class="metric"><b>1,000+</b><span>users on the ERP I own<em>my own product</em></span></div>
       <div class="metric"><b>200+</b><span>businesses on my state-approved POS<em>my own product</em></span></div>
       <div class="metric"><b>150+</b><span>stores on the retail platform I architect<em>employer</em></span></div>
@@ -262,8 +267,8 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
               <ul>
                 <li><b>Central ERP platform and configurator.</b> Designed a microservices ERP platform around a dynamic SQL-metadata-driven configurator, so new modules and fields are defined as data rather than compiled code — cutting the time to deliver a new module by roughly an order of magnitude.</li>
                 <li><b>Single sign-on and organisational RBAC.</b> Replaced per-application logins with one identity service whose permission model follows the company's own org hierarchy; new project deployment cycles shortened by about 30%.</li>
-                <li><b>Warehouse management and goods receipt.</b> End-to-end WMS with pallet coordination, enforced FIFO and live inventory-to-sales tracking; associated with roughly +5% store sales and −7% fresh-produce loss across 150+ stores.</li>
-                <li><b>Excise and tax compliance.</b> Consolidated excise goods handling from separate platforms into one computerised tax accounting module, cutting fiscal reporting cycle time by about 20%.</li>
+                <li><b>Warehouse management and goods receipt.</b> End-to-end WMS with pallet coordination, enforced FIFO and live inventory-to-sales tracking across 150+ stores: roughly +5% store sales and −7% fresh-produce loss. The mechanism is unglamorous — FIFO is enforced by the system instead of by whoever is on shift, and stock is visible against live sales, so produce leaves the dock ordered by remaining shelf life rather than by arrival order. Less produce reaches its last day unsold, and fewer shelves sit empty while stock waits behind them.</li>
+                <li><b>Excise and tax compliance.</b> Excise goods were tracked in separate platforms and reconciled by hand at every period close. Consolidating them into one computerised tax accounting module removed the reconciliation step rather than speeding it up — which is where the ~20% shorter fiscal reporting cycle comes from.</li>
                 <li><b>Zero-downtime legacy migration.</b> Moved millions of legacy records onto the new database and microservice landscape in phases, with full data integrity and no business interruption.</li>
                 <li><b>Real-time POS telemetry.</b> Live fault monitoring across roughly 800 POS terminals in 150+ stores, broadcast to command-centre video walls, bringing terminal downtime to near zero.</li>
                 <li><b>Enterprise module suite.</b> HR, accounting, B2B supplier portal, procurement and financial audit, unified on the same platform.</li>
@@ -373,6 +378,11 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 registering a service and declaring its permission tree — no new authentication code,
                 and no new place for permissions to go stale. Redundant auth systems were retired.
               </p>
+              <p class="why"><b>Where the 30% comes from</b>
+                Every new application used to ship its own login screen, its own user table and its
+                own permission logic, then wait on IT to populate it — roughly a third of the setup
+                work before anyone could log in. That work is now zero. The saving is the removal of
+                a fixed step, not developers going faster.</p>
             </div>
           </div>
           <div class="stackline">
@@ -414,6 +424,11 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 customer — is the same one underneath my own commercial ERP product, where it removes
                 the need for a code branch per client.
               </p>
+              <p class="why"><b>Where the 10× comes from</b>
+                Not developers typing faster. A module used to need a code change, a build, a
+                regression pass and a slot in a deployment window — days of calendar time, most of it
+                waiting. Authored as metadata, the same module is live the same day. What was removed
+                is the release cycle; the design work is unchanged.</p>
             </div>
           </div>
           <div class="stackline">
@@ -456,6 +471,13 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 35% — because the integrations that used to be bought separately came with the
                 product. This is my own product, not employer work, so the architecture, licensing,
                 installer, printing service and the certification itself are all mine.
+              </p>
+              <p class="why"><b>Where the 35% comes from</b>
+                Arithmetic rather than estimate. A merchant opening a till used to buy and integrate
+                five things separately — the fiscal device, the e-invoicing connection, the bank
+                terminal link, the cashless wallet and the loyalty scheme — each with its own vendor,
+                hardware and integration fee. They now arrive with the product. The saving is the
+                four purchases that no longer happen.
               </p>
             </div>
           </div>
@@ -543,6 +565,11 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 over the phone, and terminal downtime dropped to near zero. The same service became
                 the place where store-versus-centre data disagreements get reconciled.
               </p>
+              <p class="why"><b>What "near zero" actually means</b>
+                Repair time did not change — detection time did. A fault used to be discovered by a
+                customer standing in a queue and reported by phone; it now appears on the wall within
+                seconds of the terminal going quiet. The downtime that disappeared is the interval
+                between failing and anyone knowing.</p>
             </div>
           </div>
           <div class="stackline">
@@ -586,6 +613,11 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 field teams kept working. The migration risk — not the feature list — was the hard
                 part, and it is the part I would want to be asked about.
               </p>
+              <p class="why"><b>Why "zero downtime" is a method, not luck</b>
+                There was never a cutover window, because there was never a moment when only one path
+                existed. Old and new ran together, traffic moved in slices, and every slice stayed
+                reversible until its data had been verified against the source. A slice that
+                misbehaved was rolled back without the business noticing.</p>
             </div>
           </div>
           <div class="stackline">
@@ -651,7 +683,7 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
 
         <div class="tablewrap">
           <table>
-            <caption>43 systems — retail platform, integration services, product line, independent work</caption>
+            <caption>50+ systems — retail platform, integration services, product line, independent work</caption>
             <thead>
               <tr><th scope="col">System</th><th scope="col">What it does</th><th scope="col">Stack</th></tr>
             </thead>
@@ -835,8 +867,9 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
                 <td class="tech">C#, .NET, PostgreSQL, Docker, Entra ID</td>
               </tr>
               <tr>
-                <th scope="row">German-language study app</th>
-                <td>A vocabulary and grammar trainer for Azerbaijani speakers, with flashcards, quizzes and speech synthesis for pronunciation. No backend — everything ships with the app and works offline.</td>
+                <th scope="row">German-language study app<br>
+                  <a href="https://lachinovedhem.github.io/german-booklet/" style="font-weight:400;font-size:.82rem">lachinovedhem.github.io/german-booklet</a></th>
+                <td>A vocabulary and grammar trainer for Azerbaijani speakers, with flashcards, quizzes and speech synthesis for pronunciation. No backend — everything ships with the app and works offline as an installable PWA. Built for my own German study, which is the only reason it gets used honestly. <b>Source and live app are public.</b></td>
                 <td class="tech">React 19, Vite, Tailwind, Web Speech API, PWA</td>
               </tr>
               <tr>
@@ -1052,9 +1085,9 @@ footer{border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5);color:var(
       <footer>
         <p>
           Adham Lachinov — Berlin. Systems are described by function and stack only; no client data,
-          internal identifiers or proprietary source code appears on this page. Figures given are
-          internal measurements from the operators concerned and I am happy to explain how each was
-          arrived at.
+          internal identifiers or proprietary source code appears on this page. Every figure quoted
+          is stated together with the mechanism that produced it, so it can be argued with rather
+          than taken on trust — and I am happy to go through any of them in detail.
         </p>
       </footer>
     </main>
